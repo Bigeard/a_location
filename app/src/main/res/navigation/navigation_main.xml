@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/detailHousingFragment"
+        android:name="com.ynov.a_location.fragment.DetailHousingFragment"
+        android:label="fragment_detail_housing"
+        tools:layout="@layout/fragment_detail_housing" >
+        <argument
+            android:name="housing"
+            app:argType="com.ynov.a_location.bo.Housing" />
+    </fragment>
+    <fragment
+        android:id="@+id/listHousingFragment"
+        android:name="com.ynov.a_location.fragment.ListHousingFragment"
+        android:label="fragment_list_housing"
+        tools:layout="@layout/fragment_list_housing" >
+        <action
+            android:id="@+id/action_listHousingFragment_to_detailHousingFragment"
+            app:destination="@id/detailHousingFragment" />
+        <argument
+            android:name="city_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/listCityFragment"
+        android:name="com.ynov.a_location.fragment.ListCityFragment"
+        android:label="fragment_list_city"
+        tools:layout="@layout/fragment_list_users" >
+        <action
+            android:id="@+id/action_listCityFragment_to_listHousingFragment"
+            app:destination="@id/listHousingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ynov.a_location.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_listCityFragment"
+            app:destination="@id/listCityFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+</navigation>
