@@ -58,8 +58,6 @@ public class CityAdapter extends RecyclerView.Adapter<CityViewHolder> {
                 (view)-> Navigation.findNavController(holder.itemView)
                         .navigate((NavDirections) action)
         );
-        Log.e("TAG", city.getId());
-        Log.e("TAG", city.getImage().getUrl());
         holder.binding.setCity(city);
         Picasso.get().load("https://flutter-learning.mooo.com" + city.getImage().getUrl()).resize(120, 60).into(holder.binding.imageViewCity);
     }

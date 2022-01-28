@@ -8,17 +8,21 @@ public class Housing implements Parcelable {
     String title;
     String price;
     String created_at;
+    HousingImage illustrations;
 
-    public Housing(String title, String created_at) {
+    public Housing(String title, String created_at, String price, HousingImage illustrations) {
         this.title = title;
         this.price = price;
         this.created_at = created_at;
+        this.illustrations = illustrations;
     }
+
 
     protected Housing(Parcel in) {
         title = in.readString();
         price = in.readString();
         created_at = in.readString();
+        illustrations = in.readParcelable(HousingImage.class.getClassLoader());
     }
 
     @Override
@@ -26,6 +30,7 @@ public class Housing implements Parcelable {
         dest.writeString(title);
         dest.writeString(price);
         dest.writeString(created_at);
+        dest.writeParcelable(illustrations, flags);
     }
 
     @Override
@@ -67,6 +72,14 @@ public class Housing implements Parcelable {
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
+    }
+
+    public HousingImage getIllustrations() {
+        return illustrations;
+    }
+
+    public void setIllustrations(HousingImage illustrations) {
+        this.illustrations = illustrations;
     }
 }
 

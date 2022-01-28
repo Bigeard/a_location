@@ -9,6 +9,7 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.ynov.a_location.R;
 import com.ynov.a_location.bo.Housing;
 import com.ynov.a_location.databinding.RowLayoutHousingBinding;
@@ -60,6 +61,7 @@ public class HousingAdapter extends RecyclerView.Adapter<HousingHolder> {
                         .navigate((NavDirections) action)
         );
         holder.binding.setHousing(housing);
+        Picasso.get().load("https://flutter-learning.mooo.com" + housing.getIllustrations().getUrl()).resize(120, 60).into(holder.binding.imageViewHousing);
     }
 
     @Override
